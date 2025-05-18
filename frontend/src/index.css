@@ -1,0 +1,119 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* グローバルスタイル */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f3f4f6;
+}
+
+/* カスタムスタイル */
+/* 地図コンテナ */
+.map-container {
+  height: 400px;
+  width: 100%;
+}
+
+/* レポートステータスバッジ */
+.status-new {
+  @apply bg-blue-500 text-white px-2 py-1 rounded text-sm font-medium;
+}
+
+.status-responding {
+  @apply bg-orange-500 text-white px-2 py-1 rounded text-sm font-medium;
+}
+
+.status-resolved {
+  @apply bg-green-500 text-white px-2 py-1 rounded text-sm font-medium;
+}
+
+.status-confirmed {
+  @apply bg-purple-500 text-white px-2 py-1 rounded text-sm font-medium;
+}
+
+.status-completed {
+  @apply bg-teal-500 text-white px-2 py-1 rounded text-sm font-medium;
+}
+
+/* 既存レポートのマーカー（青） */
+.report-marker {
+  filter: hue-rotate(200deg);
+}
+
+/* チャット吹き出し */
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+/* ログインページ専用スタイル */
+.login-container {
+  @apply min-h-screen flex items-center justify-center bg-gray-100;
+}
+
+.login-form {
+  @apply bg-white p-8 rounded-lg shadow-lg w-full max-w-md;
+}
+
+.login-button {
+  @apply w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:bg-blue-300 transition-opacity duration-200;
+}
+
+.login-input {
+  @apply w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* 市ユーザー向けスタイル */
+.city-assignment-button {
+  @apply bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600;
+}
+
+.city-filter-select {
+  @apply px-3 py-2 border rounded focus:ring-2 focus:ring-teal-500;
+}
+
+/* ボタンのホバーとフォーカス */
+button:hover:not(:disabled) {
+  @apply opacity-90 transition-opacity duration-200;
+}
+
+button:focus {
+  @apply ring-2 ring-blue-500 outline-none;
+}
+
+/* フォーム入力のフォーカス */
+input:focus,
+textarea:focus,
+select:focus {
+  @apply ring-2 ring-blue-500 outline-none;
+}
+
+/* テーブルヘッダーとセル */
+th {
+  @apply bg-gray-100 text-left px-4 py-2 font-semibold text-gray-700;
+}
+
+td {
+  @apply px-4 py-2 border-t;
+}
+
+/* モーダルの背景オーバーレイ */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+/* トースト通知のz-index調整 */
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+/* 割り当て履歴テーブル */
+.assignment-history-table {
+  @apply w-full bg-white shadow rounded overflow-hidden;
+}
