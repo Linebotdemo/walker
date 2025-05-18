@@ -92,6 +92,7 @@ Base = declarative_base()
 
 ws_router = APIRouter()
 app.include_router(ws_router)
+app = FastAPI()
 
 # OAuth2 scheme for token authentication
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -2651,4 +2652,4 @@ app.include_router(city_router)
 # Main entry point
 if __name__ == "__main__":
     logger.info("Starting Uvicorn server")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=10000)
