@@ -1,0 +1,10 @@
+fastapi==0.95.2
+uvicorn[standard]==0.22.0
+SQLAlchemy==2.0.19
+psycopg2-binary==2.9.7
+python-dotenv==1.0.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+requests==2.31.0
+python-multipart==0.0.6
+aiofiles==23.2.1
