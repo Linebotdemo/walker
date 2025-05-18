@@ -1,0 +1,12 @@
+# render.yaml
+services:
+  - type: web
+    name: walkauditgo-app
+    env: python
+    buildCommand: |
+      cd frontend && npm install && npm run build
+      mkdir -p backend/frontend && cp -r frontend/build backend/frontend/
+      pip install -r backend/requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    rootDir: backend
+    plan: free

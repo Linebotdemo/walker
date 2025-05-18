@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- 背景 -->
+  <rect width="400" height="200" fill="transparent"/>
+  
+  <!-- クラウドアイコン -->
+  <path d="M130,90 C130,75 142,65 157,65 C167,65 175,70 180,80 C185,75 192,72 200,72 C215,72 225,85 225,100 C238,100 250,110 250,125 C250,140 238,150 225,150 L140,150 C125,150 115,140 115,125 C115,110 125,100 140,100 C140,95 135,90 130,90 Z" fill="#f1f5f9" stroke="#2563eb" stroke-width="3"/>
+  
+  <!-- 建設アイコン -->
+  <rect x="160" y="95" width="12" height="55" fill="#f97316" />
+  <rect x="180" y="105" width="12" height="45" fill="#f97316" />
+  <rect x="200" y="115" width="12" height="35" fill="#f97316" />
+  <path d="M155,95 L217,95" stroke="#f97316" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- テキスト -->
+  <text x="200" y="175" font-family="Arial, sans-serif" font-weight="bold" font-size="22" text-anchor="middle" fill="#1e293b">BuildConnect</text>
+</svg>
