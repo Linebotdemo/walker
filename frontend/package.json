@@ -2,6 +2,7 @@
   "name": "walkaudit-go-frontend",
   "version": "1.0.0",
   "scripts": {
+    "build": "npx vite build",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
