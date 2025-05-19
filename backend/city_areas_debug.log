@@ -1,0 +1,320 @@
+2025-05-01 20:53:13.525211 - 🛂 city_required start
+2025-05-01 20:53:13.526262 - 📦 decoded payload: {'sub': '3', 'exp': 1746101609}
+2025-05-01 20:53:13.527242 - 👤 fetched user: <main.User object at 0x000001F6400C9710>
+2025-05-01 20:53:13.529242 - 🏢 fetched org: <main.Organization object at 0x000001F6400D1F50>
+2025-05-01 20:53:13.530241 - 🔥 error in city_required: 403: Not a city organization
+Traceback (most recent call last):
+  File "C:\1saigo\backend\main.py", line 420, in city_required
+    raise HTTPException(status_code=403, detail="Not a city organization")
+fastapi.exceptions.HTTPException: 403: Not a city organization
+
+2025-05-01 20:53:26.150371 - 🛂 city_required start
+2025-05-01 20:53:26.151371 - 📦 decoded payload: {'sub': '3', 'exp': 1746102200}
+2025-05-01 20:53:26.151371 - 👤 fetched user: <main.User object at 0x000001F64016ABD0>
+2025-05-01 20:53:26.152371 - 🏢 fetched org: <main.Organization object at 0x000001F64016A350>
+2025-05-01 20:53:26.153382 - 🔥 error in city_required: 403: Not a city organization
+Traceback (most recent call last):
+  File "C:\1saigo\backend\main.py", line 420, in city_required
+    raise HTTPException(status_code=403, detail="Not a city organization")
+fastapi.exceptions.HTTPException: 403: Not a city organization
+
+2025-05-01 20:55:49.357132 - 🛂 city_required start
+2025-05-01 20:55:49.357132 - 📦 decoded payload: {'sub': '3', 'exp': 1746102200}
+2025-05-01 20:55:49.358125 - 👤 fetched user: <main.User object at 0x000001B032735BD0>
+2025-05-01 20:55:49.359154 - 🏢 fetched org: <main.Organization object at 0x000001B03275E1D0>
+2025-05-01 20:55:49.360126 - 🔥 error in city_required: 403: Not a city organization
+Traceback (most recent call last):
+  File "C:\1saigo\backend\main.py", line 420, in city_required
+    raise HTTPException(status_code=403, detail="Not a city organization")
+fastapi.exceptions.HTTPException: 403: Not a city organization
+
+2025-05-01 20:59:40.966104 - 🛂 city_required start
+2025-05-01 20:59:40.967105 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 20:59:40.967105 - 👤 fetched user: <main.User object at 0x0000023B551372D0>
+2025-05-01 20:59:40.969105 - 🏢 fetched org: <main.Organization object at 0x0000023B55132550>
+2025-05-01 21:06:08.814021 - 🛂 city_required start
+2025-05-01 21:06:08.814021 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:06:08.815024 - 👤 fetched user: <main.User object at 0x000001D388901F10>
+2025-05-01 21:06:08.817023 - 🏢 fetched org: <main.Organization object at 0x000001D38891A210>
+2025-05-01 21:06:15.536875 - 🛂 city_required start
+2025-05-01 21:06:15.536875 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:06:15.537876 - 👤 fetched user: <main.User object at 0x000001D38897FE90>
+2025-05-01 21:06:15.538876 - 🏢 fetched org: <main.Organization object at 0x000001D388984190>
+2025-05-01 21:12:00.145105 - 🛂 city_required start
+2025-05-01 21:12:00.146105 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:12:00.149107 - 👤 fetched user: <main.User object at 0x000001F40C03C550>
+2025-05-01 21:12:00.151107 - 🏢 fetched org: <main.Organization object at 0x000001F40C0909D0>
+2025-05-01 21:12:00.167105 - 🛂 city_required start
+2025-05-01 21:12:00.168106 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:12:00.170107 - 👤 fetched user: <main.User object at 0x000001F40C0ADE90>
+2025-05-01 21:12:00.172107 - 🏢 fetched org: <main.Organization object at 0x000001F40C0758D0>
+2025-05-01 21:12:00.179133 - 🛂 city_required start
+2025-05-01 21:12:00.180106 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:12:00.181106 - 👤 fetched user: <main.User object at 0x000001F40C0ABBD0>
+2025-05-01 21:12:00.184108 - 🏢 fetched org: <main.Organization object at 0x000001F40C0BDFD0>
+2025-05-01 21:12:00.185135 - 🛂 city_required start
+2025-05-01 21:12:00.187105 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:12:00.188107 - 👤 fetched user: <main.User object at 0x000001F40C074710>
+2025-05-01 21:12:00.189139 - 🏢 fetched org: <main.Organization object at 0x000001F40C0BD1D0>
+2025-05-01 21:12:12.550629 - 🛂 city_required start
+2025-05-01 21:12:12.551604 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:12:12.552628 - 👤 fetched user: <main.User object at 0x000001F40C0BF290>
+2025-05-01 21:12:12.552628 - 🏢 fetched org: <main.Organization object at 0x000001F40C0BF490>
+2025-05-01 21:12:13.782532 - 🛂 city_required start
+2025-05-01 21:12:13.783531 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:12:13.784234 - 👤 fetched user: <main.User object at 0x000001F40C0C7410>
+2025-05-01 21:12:13.785217 - 🏢 fetched org: <main.Organization object at 0x000001F40C0C7590>
+2025-05-01 21:18:45.818373 - 🛂 city_required start
+2025-05-01 21:18:45.819374 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:45.821374 - 👤 fetched user: <main.User object at 0x000001F40C0F80D0>
+2025-05-01 21:18:45.823377 - 🏢 fetched org: <main.Organization object at 0x000001F40C101390>
+2025-05-01 21:18:45.838374 - 🛂 city_required start
+2025-05-01 21:18:45.839373 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:45.840373 - 👤 fetched user: <main.User object at 0x000001F40C0F1690>
+2025-05-01 21:18:45.842373 - 🏢 fetched org: <main.Organization object at 0x000001F40C100AD0>
+2025-05-01 21:18:45.844372 - 🛂 city_required start
+2025-05-01 21:18:45.846374 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:45.847373 - 👤 fetched user: <main.User object at 0x000001F40C10C810>
+2025-05-01 21:18:45.849374 - 🏢 fetched org: <main.Organization object at 0x000001F40C100B50>
+2025-05-01 21:18:45.858373 - 🛂 city_required start
+2025-05-01 21:18:45.859375 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:45.860374 - 👤 fetched user: <main.User object at 0x000001F40C0FB390>
+2025-05-01 21:18:45.861375 - 🏢 fetched org: <main.Organization object at 0x000001F40C0F3510>
+2025-05-01 21:18:50.459194 - 🛂 city_required start
+2025-05-01 21:18:50.459194 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:50.460192 - 👤 fetched user: <main.User object at 0x000001F40C10C850>
+2025-05-01 21:18:50.461194 - 🏢 fetched org: <main.Organization object at 0x000001F40C10CE90>
+2025-05-01 21:18:56.506025 - 🛂 city_required start
+2025-05-01 21:18:56.507027 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:56.508027 - 👤 fetched user: <main.User object at 0x000001F40C10FAD0>
+2025-05-01 21:18:56.509027 - 🏢 fetched org: <main.Organization object at 0x000001F40C10FCD0>
+2025-05-01 21:18:58.002384 - 🛂 city_required start
+2025-05-01 21:18:58.003382 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:58.004382 - 👤 fetched user: <main.User object at 0x000001F40C111810>
+2025-05-01 21:18:58.005398 - 🏢 fetched org: <main.Organization object at 0x000001F40C111950>
+2025-05-01 21:18:59.162641 - 🛂 city_required start
+2025-05-01 21:18:59.163642 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:59.165641 - 🛂 city_required start
+2025-05-01 21:18:59.166642 - 👤 fetched user: <main.User object at 0x000001F40C119E90>
+2025-05-01 21:18:59.166642 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:59.167641 - 🏢 fetched org: <main.Organization object at 0x000001F40C112490>
+2025-05-01 21:18:59.168642 - 👤 fetched user: <main.User object at 0x000001F40C110E90>
+2025-05-01 21:18:59.171672 - 🏢 fetched org: <main.Organization object at 0x000001F40C1422D0>
+2025-05-01 21:18:59.192069 - 🛂 city_required start
+2025-05-01 21:18:59.192069 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:59.192069 - 🛂 city_required start
+2025-05-01 21:18:59.193070 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:18:59.193070 - 👤 fetched user: <main.User object at 0x000001F40C142150>
+2025-05-01 21:18:59.195071 - 👤 fetched user: <main.User object at 0x000001F40C141F90>
+2025-05-01 21:18:59.196068 - 🏢 fetched org: <main.Organization object at 0x000001F40C1429D0>
+2025-05-01 21:18:59.196068 - 🏢 fetched org: <main.Organization object at 0x000001F40C142710>
+2025-05-01 21:19:03.524732 - 🛂 city_required start
+2025-05-01 21:19:03.525733 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:03.526733 - 👤 fetched user: <main.User object at 0x000001F40C119A10>
+2025-05-01 21:19:03.527732 - 🏢 fetched org: <main.Organization object at 0x000001F40C118F50>
+2025-05-01 21:19:04.971952 - 🛂 city_required start
+2025-05-01 21:19:04.972949 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:04.974950 - 👤 fetched user: <main.User object at 0x000001F40C103D90>
+2025-05-01 21:19:04.976951 - 🏢 fetched org: <main.Organization object at 0x000001F40C103850>
+2025-05-01 21:19:05.005951 - 🛂 city_required start
+2025-05-01 21:19:05.006950 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:05.008951 - 👤 fetched user: <main.User object at 0x000001F40C0F1B50>
+2025-05-01 21:19:05.010951 - 🏢 fetched org: <main.Organization object at 0x000001F40C0F04D0>
+2025-05-01 21:19:05.036952 - 🛂 city_required start
+2025-05-01 21:19:05.037951 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:05.039951 - 👤 fetched user: <main.User object at 0x000001F40C0F9F50>
+2025-05-01 21:19:05.041951 - 🏢 fetched org: <main.Organization object at 0x000001F40C0F9C10>
+2025-05-01 21:19:05.053949 - 🛂 city_required start
+2025-05-01 21:19:05.053949 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:05.054949 - 👤 fetched user: <main.User object at 0x000001F40C10FD90>
+2025-05-01 21:19:05.055950 - 🏢 fetched org: <main.Organization object at 0x000001F40C10FB50>
+2025-05-01 21:19:10.843513 - 🛂 city_required start
+2025-05-01 21:19:10.844512 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:10.845514 - 👤 fetched user: <main.User object at 0x000001F40C11B9D0>
+2025-05-01 21:19:10.846513 - 🏢 fetched org: <main.Organization object at 0x000001F40C118F10>
+2025-05-01 21:19:12.319702 - 🛂 city_required start
+2025-05-01 21:19:12.319702 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:12.321703 - 👤 fetched user: <main.User object at 0x000001F40C11B790>
+2025-05-01 21:19:12.322702 - 🏢 fetched org: <main.Organization object at 0x000001F40C118150>
+2025-05-01 21:19:28.869633 - 🛂 city_required start
+2025-05-01 21:19:28.870632 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:28.871630 - 👤 fetched user: <main.User object at 0x000001F40C143AD0>
+2025-05-01 21:19:28.872631 - 🏢 fetched org: <main.Organization object at 0x000001F40C142390>
+2025-05-01 21:19:30.549528 - 🛂 city_required start
+2025-05-01 21:19:30.549528 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:30.550527 - 👤 fetched user: <main.User object at 0x000001F40C141E50>
+2025-05-01 21:19:30.551526 - 🏢 fetched org: <main.Organization object at 0x000001F40C142610>
+2025-05-01 21:19:32.198886 - 🛂 city_required start
+2025-05-01 21:19:32.201890 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:32.203884 - 👤 fetched user: <main.User object at 0x000001F40C115A90>
+2025-05-01 21:19:32.205886 - 🏢 fetched org: <main.Organization object at 0x000001F40C116FD0>
+2025-05-01 21:19:32.237889 - 🛂 city_required start
+2025-05-01 21:19:32.238887 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:32.241889 - 👤 fetched user: <main.User object at 0x000001F40C143FD0>
+2025-05-01 21:19:32.243887 - 🏢 fetched org: <main.Organization object at 0x000001F40C116810>
+2025-05-01 21:19:32.252885 - 🛂 city_required start
+2025-05-01 21:19:32.253885 - 🛂 city_required start
+2025-05-01 21:19:32.253885 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:32.253885 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:19:32.255884 - 👤 fetched user: <main.User object at 0x000001F40C1766D0>
+2025-05-01 21:19:32.258885 - 🏢 fetched org: <main.Organization object at 0x000001F40C177C50>
+2025-05-01 21:20:07.040529 - 🛂 city_required start
+2025-05-01 21:20:07.041532 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:20:07.042533 - 👤 fetched user: <main.User object at 0x000001F40C118310>
+2025-05-01 21:20:07.044531 - 🏢 fetched org: <main.Organization object at 0x000001F40C1145D0>
+2025-05-01 21:20:07.066531 - 🛂 city_required start
+2025-05-01 21:20:07.067531 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:20:07.070196 - 👤 fetched user: <main.User object at 0x000001F40C174BD0>
+2025-05-01 21:20:07.071197 - 🏢 fetched org: <main.Organization object at 0x000001F40C1741D0>
+2025-05-01 21:20:07.073197 - 🛂 city_required start
+2025-05-01 21:20:07.075196 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:20:07.080197 - 👤 fetched user: <main.User object at 0x000001F40C176390>
+2025-05-01 21:20:07.082198 - 🏢 fetched org: <main.Organization object at 0x000001F40C174250>
+2025-05-01 21:20:07.097198 - 🛂 city_required start
+2025-05-01 21:20:07.098196 - 📦 decoded payload: {'sub': '3', 'exp': 1746102575}
+2025-05-01 21:20:07.099197 - 👤 fetched user: <main.User object at 0x000001F40C176910>
+2025-05-01 21:20:07.101194 - 🏢 fetched org: <main.Organization object at 0x000001F40C175FD0>
+2025-05-01 22:01:58.306750 - 🛂 city_required start
+2025-05-01 22:01:58.307749 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:01:58.310750 - 👤 fetched user: <main.User object at 0x0000025748B8BAD0>
+2025-05-01 22:01:58.313749 - 🏢 fetched org: <main.Organization object at 0x0000025748B98C90>
+2025-05-01 22:01:58.338748 - 🛂 city_required start
+2025-05-01 22:01:58.339749 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:01:58.341749 - 🛂 city_required start
+2025-05-01 22:01:58.341749 - 👤 fetched user: <main.User object at 0x0000025748BCAE50>
+2025-05-01 22:01:58.341749 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:01:58.342748 - 🏢 fetched org: <main.Organization object at 0x0000025748BCB750>
+2025-05-01 22:01:58.343748 - 👤 fetched user: <main.User object at 0x0000025748BCB710>
+2025-05-01 22:01:58.344766 - 🏢 fetched org: <main.Organization object at 0x0000025748BCB910>
+2025-05-01 22:01:58.363748 - 🛂 city_required start
+2025-05-01 22:01:58.364750 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:01:58.365781 - 👤 fetched user: <main.User object at 0x0000025748BC9F50>
+2025-05-01 22:01:58.366778 - 🏢 fetched org: <main.Organization object at 0x0000025748BCA4D0>
+2025-05-01 22:05:53.308806 - 🛂 city_required start
+2025-05-01 22:05:53.309735 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:05:53.310736 - 👤 fetched user: <main.User object at 0x0000025748BC0D50>
+2025-05-01 22:05:53.311734 - 🏢 fetched org: <main.Organization object at 0x0000025748B8B210>
+2025-05-01 22:05:53.328795 - 🛂 city_required start
+2025-05-01 22:05:53.329735 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:05:53.331734 - 👤 fetched user: <main.User object at 0x0000025748B89CD0>
+2025-05-01 22:05:53.333735 - 🏢 fetched org: <main.Organization object at 0x0000025748BDDDD0>
+2025-05-01 22:05:53.333735 - 🛂 city_required start
+2025-05-01 22:05:53.335735 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:05:53.337734 - 👤 fetched user: <main.User object at 0x0000025748BDFED0>
+2025-05-01 22:05:53.338817 - 🏢 fetched org: <main.Organization object at 0x0000025748BCAF90>
+2025-05-01 22:05:53.352316 - 🛂 city_required start
+2025-05-01 22:05:53.353318 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:05:53.354315 - 👤 fetched user: <main.User object at 0x0000025748BDFE90>
+2025-05-01 22:05:53.355315 - 🏢 fetched org: <main.Organization object at 0x0000025748BDE6D0>
+2025-05-01 22:07:05.998233 - 🛂 city_required start
+2025-05-01 22:07:05.998233 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:05.999232 - 👤 fetched user: <main.User object at 0x0000025748BE4990>
+2025-05-01 22:07:06.000232 - 🏢 fetched org: <main.Organization object at 0x0000025748BE6010>
+2025-05-01 22:07:06.012232 - 🛂 city_required start
+2025-05-01 22:07:06.013232 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:06.014231 - 👤 fetched user: <main.User object at 0x0000025748BE6010>
+2025-05-01 22:07:06.014231 - 🏢 fetched org: <main.Organization object at 0x0000025748BE6F10>
+2025-05-01 22:07:10.334863 - 🛂 city_required start
+2025-05-01 22:07:10.336137 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:10.338120 - 👤 fetched user: <main.User object at 0x0000025748BFD750>
+2025-05-01 22:07:10.339120 - 🏢 fetched org: <main.Organization object at 0x0000025748BE5410>
+2025-05-01 22:07:10.349424 - 🛂 city_required start
+2025-05-01 22:07:10.350345 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:10.353342 - 👤 fetched user: <main.User object at 0x0000025748BEF090>
+2025-05-01 22:07:10.355342 - 🏢 fetched org: <main.Organization object at 0x0000025748BFCD10>
+2025-05-01 22:07:10.363341 - 🛂 city_required start
+2025-05-01 22:07:10.364340 - 🛂 city_required start
+2025-05-01 22:07:10.364340 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:10.366374 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:10.366374 - 👤 fetched user: <main.User object at 0x0000025748BEED90>
+2025-05-01 22:07:10.367341 - 👤 fetched user: <main.User object at 0x0000025748C01E50>
+2025-05-01 22:07:10.367341 - 🏢 fetched org: <main.Organization object at 0x0000025748C00B90>
+2025-05-01 22:07:10.368343 - 🏢 fetched org: <main.Organization object at 0x0000025748BE6E10>
+2025-05-01 22:07:34.973767 - 🛂 city_required start
+2025-05-01 22:07:34.974767 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:34.975768 - 👤 fetched user: <main.User object at 0x0000025748C09AD0>
+2025-05-01 22:07:34.975768 - 🏢 fetched org: <main.Organization object at 0x0000025748C09D10>
+2025-05-01 22:07:35.000403 - 🛂 city_required start
+2025-05-01 22:07:35.001404 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:35.002407 - 👤 fetched user: <main.User object at 0x0000025748BE5390>
+2025-05-01 22:07:35.003403 - 🏢 fetched org: <main.Organization object at 0x0000025748BFC490>
+2025-05-01 22:07:35.020406 - 🛂 city_required start
+2025-05-01 22:07:35.020406 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:35.021405 - 👤 fetched user: <main.User object at 0x0000025748B4C250>
+2025-05-01 22:07:35.022415 - 🏢 fetched org: <main.Organization object at 0x0000025748B99010>
+2025-05-01 22:07:35.032404 - 🛂 city_required start
+2025-05-01 22:07:35.033405 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:07:35.034405 - 👤 fetched user: <main.User object at 0x0000025748BEF310>
+2025-05-01 22:07:35.035405 - 🏢 fetched org: <main.Organization object at 0x0000025748BECDD0>
+2025-05-01 22:30:31.712868 - 🛂 city_required start
+2025-05-01 22:30:31.712868 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:30:31.714869 - 👤 fetched user: <main.User object at 0x000001ED2F214B10>
+2025-05-01 22:30:31.716867 - 🏢 fetched org: <main.Organization object at 0x000001ED2F216090>
+2025-05-01 22:30:31.746866 - 🛂 city_required start
+2025-05-01 22:30:31.747867 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:30:31.748865 - 👤 fetched user: <main.User object at 0x000001ED2F24A390>
+2025-05-01 22:30:31.749868 - 🏢 fetched org: <main.Organization object at 0x000001ED2F24A650>
+2025-05-01 22:30:31.770865 - 🛂 city_required start
+2025-05-01 22:30:31.770865 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:30:31.771867 - 👤 fetched user: <main.User object at 0x000001ED2F2558D0>
+2025-05-01 22:30:31.772867 - 🏢 fetched org: <main.Organization object at 0x000001ED2F255B10>
+2025-05-01 22:30:31.783898 - 🛂 city_required start
+2025-05-01 22:30:31.783898 - 📦 decoded payload: {'sub': '3', 'exp': 1746106318}
+2025-05-01 22:30:31.784866 - 👤 fetched user: <main.User object at 0x000001ED2F208890>
+2025-05-01 22:30:31.785892 - 🏢 fetched org: <main.Organization object at 0x000001ED2F2544D0>
+2025-05-01 22:35:16.164897 - 🛂 city_required start
+2025-05-01 22:35:16.166896 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:35:16.168898 - 👤 fetched user: <main.User object at 0x000001CA1ABD9090>
+2025-05-01 22:35:16.170900 - 🏢 fetched org: <main.Organization object at 0x000001CA1ABDA350>
+2025-05-01 22:35:16.184438 - 🛂 city_required start
+2025-05-01 22:35:16.185467 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:35:16.186437 - 👤 fetched user: <main.User object at 0x000001CA1AC081D0>
+2025-05-01 22:35:16.187438 - 🏢 fetched org: <main.Organization object at 0x000001CA1AC08310>
+2025-05-01 22:35:16.198439 - 🛂 city_required start
+2025-05-01 22:35:16.199666 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:35:16.200650 - 👤 fetched user: <main.User object at 0x000001CA1AC08110>
+2025-05-01 22:35:16.201676 - 🏢 fetched org: <main.Organization object at 0x000001CA1AC09D90>
+2025-05-01 22:35:16.211651 - 🛂 city_required start
+2025-05-01 22:35:16.212651 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:35:16.213649 - 👤 fetched user: <main.User object at 0x000001CA1AC08210>
+2025-05-01 22:35:16.213649 - 🏢 fetched org: <main.Organization object at 0x000001CA1AC0BF50>
+2025-05-01 22:36:26.258425 - 🛂 city_required start
+2025-05-01 22:36:26.258425 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:36:26.259924 - 👤 fetched user: <main.User object at 0x000002569785EC10>
+2025-05-01 22:36:26.261227 - 🏢 fetched org: <main.Organization object at 0x00000256978641D0>
+2025-05-01 22:36:26.285079 - 🛂 city_required start
+2025-05-01 22:36:26.285079 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:36:26.287080 - 👤 fetched user: <main.User object at 0x0000025697898F90>
+2025-05-01 22:36:26.289077 - 🏢 fetched org: <main.Organization object at 0x0000025697899210>
+2025-05-01 22:36:26.302378 - 🛂 city_required start
+2025-05-01 22:36:26.303379 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:36:26.304377 - 👤 fetched user: <main.User object at 0x00000256978A4690>
+2025-05-01 22:36:26.304377 - 🏢 fetched org: <main.Organization object at 0x00000256978A4890>
+2025-05-01 22:36:26.313974 - 🛂 city_required start
+2025-05-01 22:36:26.313974 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:36:26.314975 - 👤 fetched user: <main.User object at 0x0000025697895010>
+2025-05-01 22:36:26.315975 - 🏢 fetched org: <main.Organization object at 0x0000025697896A10>
+2025-05-01 22:47:34.000766 - 🛂 city_required start
+2025-05-01 22:47:34.000766 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:47:34.003766 - 👤 fetched user: <main.User object at 0x00000256978C50D0>
+2025-05-01 22:47:34.005767 - 🏢 fetched org: <main.Organization object at 0x00000256978C5DD0>
+2025-05-01 22:47:34.045766 - 🛂 city_required start
+2025-05-01 22:47:34.046764 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:47:34.047765 - 👤 fetched user: <main.User object at 0x00000256978C5D10>
+2025-05-01 22:47:34.050765 - 🏢 fetched org: <main.Organization object at 0x00000256978C5DD0>
+2025-05-01 22:47:37.268518 - 🛂 city_required start
+2025-05-01 22:47:37.270518 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:47:37.272519 - 👤 fetched user: <main.User object at 0x00000256978C2690>
+2025-05-01 22:47:37.274517 - 🏢 fetched org: <main.Organization object at 0x00000256978C2890>
+2025-05-01 22:47:37.294290 - 🛂 city_required start
+2025-05-01 22:47:37.295289 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:47:37.297286 - 👤 fetched user: <main.User object at 0x00000256978C2FD0>
+2025-05-01 22:47:37.299287 - 🏢 fetched org: <main.Organization object at 0x00000256978C2990>
+2025-05-01 22:47:37.301288 - 🛂 city_required start
+2025-05-01 22:47:37.302287 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:47:37.304288 - 👤 fetched user: <main.User object at 0x00000256978D8D50>
+2025-05-01 22:47:37.306287 - 🏢 fetched org: <main.Organization object at 0x00000256978D8690>
+2025-05-01 22:47:37.320289 - 🛂 city_required start
+2025-05-01 22:47:37.320289 - 📦 decoded payload: {'sub': '3', 'exp': 1746108316}
+2025-05-01 22:47:37.321289 - 👤 fetched user: <main.User object at 0x00000256978C7CD0>
+2025-05-01 22:47:37.322287 - 🏢 fetched org: <main.Organization object at 0x00000256978C7B50>

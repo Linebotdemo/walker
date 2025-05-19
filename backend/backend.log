@@ -1,0 +1,79 @@
+2025-05-16 15:08:44,119 - main - INFO - Starting FastAPI application
+2025-05-16 15:08:44,121 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-16 15:08:44,213 - main - INFO - Database tables created
+2025-05-16 15:08:44,252 - main - INFO - FastAPI instance initialized
+2025-05-16 15:08:44,252 - main - INFO - CORS middleware configured
+2025-05-16 15:08:44,363 - main - INFO - Application startup
+2025-05-16 15:08:44,363 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-16 15:08:44,403 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Keken\AppData\Roaming\Python\Python311\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-16 15:08:44,414 - passlib.handlers.bcrypt - DEBUG - detected 'bcrypt' backend, version '<unknown>'
+2025-05-16 15:08:44,414 - passlib.handlers.bcrypt - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2025-05-16 15:08:44,629 - main - INFO - Created admin user: admin@example.com with code U-50C993
+2025-05-19 08:07:53,923 - main - INFO - Starting FastAPI application
+2025-05-19 08:07:53,925 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:07:54,016 - main - INFO - Database tables created
+2025-05-19 08:07:54,053 - main - INFO - FastAPI instance initialized
+2025-05-19 08:07:54,053 - main - INFO - CORS middleware configured
+2025-05-19 08:07:54,161 - main - INFO - Application startup
+2025-05-19 08:07:54,161 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:07:54,203 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Keken\AppData\Roaming\Python\Python311\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-19 08:07:54,214 - passlib.handlers.bcrypt - DEBUG - detected 'bcrypt' backend, version '<unknown>'
+2025-05-19 08:07:54,214 - passlib.handlers.bcrypt - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2025-05-19 08:07:54,427 - main - INFO - Created admin user: admin@example.com with code U-6CDFED
+2025-05-19 08:14:10,655 - main - INFO - Starting FastAPI application
+2025-05-19 08:14:10,658 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:14:10,699 - main - INFO - Database tables created
+2025-05-19 08:14:10,726 - main - INFO - FastAPI instance initialized
+2025-05-19 08:14:10,726 - main - INFO - CORS middleware configured
+2025-05-19 08:14:10,831 - main - INFO - Application startup
+2025-05-19 08:14:10,831 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:18:54,784 - main - INFO - Starting FastAPI application
+2025-05-19 08:18:54,786 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:18:54,838 - main - INFO - Database tables created
+2025-05-19 08:18:54,871 - main - INFO - FastAPI instance initialized
+2025-05-19 08:18:54,871 - main - INFO - CORS middleware configured
+2025-05-19 08:18:54,996 - main - INFO - Application startup
+2025-05-19 08:18:54,996 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:22:56,245 - main - INFO - Starting FastAPI application
+2025-05-19 08:22:56,246 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:22:56,288 - main - INFO - Database tables created
+2025-05-19 08:22:56,314 - main - INFO - FastAPI instance initialized
+2025-05-19 08:22:56,314 - main - INFO - CORS middleware configured
+2025-05-19 08:22:56,426 - main - INFO - Application startup
+2025-05-19 08:22:56,426 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:40:09,461 - main - INFO - Starting FastAPI application
+2025-05-19 08:40:09,463 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:40:09,503 - main - INFO - Database tables created
+2025-05-19 08:40:09,528 - main - INFO - FastAPI instance initialized
+2025-05-19 08:40:09,529 - main - INFO - CORS middleware configured
+2025-05-19 08:40:09,632 - main - INFO - Application startup
+2025-05-19 08:40:09,633 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:51:22,402 - main - INFO - Starting FastAPI application
+2025-05-19 08:51:22,404 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 08:51:22,444 - main - INFO - Database tables created
+2025-05-19 08:51:22,470 - main - INFO - FastAPI instance initialized
+2025-05-19 08:51:22,470 - main - INFO - CORS middleware configured
+2025-05-19 08:51:22,576 - main - INFO - Application startup
+2025-05-19 08:51:22,576 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 11:19:13,160 - main - INFO - Starting FastAPI application
+2025-05-19 11:19:13,161 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 11:19:13,200 - main - INFO - Database tables created
+2025-05-19 11:19:13,226 - main - INFO - FastAPI instance initialized
+2025-05-19 11:19:13,226 - main - INFO - CORS middleware configured
+2025-05-19 11:19:13,329 - main - INFO - Application startup
+2025-05-19 11:19:13,329 - main - DEBUG - \U0001f527 create_admin_user 呼び出し: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 11:19:56,500 - main - INFO - Starting FastAPI application
+2025-05-19 11:19:56,501 - main - DEBUG - \u2699\ufe0f 環境変数読み込み: ADMIN_EMAIL='admin@example.com', ADMIN_PASSWORD='114514'
+2025-05-19 11:19:56,538 - main - INFO - Database tables created
+2025-05-19 11:19:56,563 - main - INFO - FastAPI instance initialized
+2025-05-19 11:19:56,563 - main - INFO - CORS middleware configured
