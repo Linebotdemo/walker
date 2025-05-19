@@ -4,7 +4,6 @@
   "scripts": {
     "build": "npx vite build",
     "dev": "vite",
-    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
