@@ -22,7 +22,6 @@ from jose import JWTError, jwt
 from fastapi import Query
 from sqlalchemy import or_
 import uuid
-import datetime
 from passlib.hash import bcrypt
 from fastapi import APIRouter
 from fastapi import Body
@@ -386,7 +385,7 @@ class MessageOut(BaseModel):
     report_id: int
     user_id: int
     content: str
-    created_at: datetime
+    created_at: datetime.datetime
 
     model_config = {
         "from_attributes": True,
