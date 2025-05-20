@@ -695,15 +695,11 @@ router = company_router
 
 
 
+app.include_router(admin_router, prefix="/api/admin")
+app.include_router(company_router, prefix="/api/company")
+app.include_router(city_router,    prefix="/api/city")
 
-app.include_router(admin_router)
-app.include_router(company_router)
-app.include_router(city_router)
-
-# ← ここで build ディレクトリへのパスを設定
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
-
-# 静的ファイル（JS/CSS/画像など）を /static 以下で配信
 app.mount(
     "/static",
     StaticFiles(directory=os.path.join(build_dir, "static")),
@@ -816,9 +812,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         content={"detail": exc.errors()}
     )
 
-@app.get("/", include_in_schema=False)
-async def serve_index():
-    return FileResponse(os.path.join(build_dir, "index.html"))
+
 
 # Utility Functions
 def save_upload(file: UploadFile) -> str:
@@ -1108,11 +1102,15 @@ def catch_all(full_path: str):
         return FileResponse(static_file)
     return FileResponse(os.path.join(build_dir, "index.html"))
 
+@app.get("/", include_in_schema=False)
+async def serve_index():
+    return FileResponse(os.path.join(build_dir, "index.html"))
+
 @app.get("/{full_path:path}", include_in_schema=False)
 async def spa_fallback(full_path: str):
-    target = os.path.join(build_dir, full_path)
-    if os.path.isfile(target):
-        return FileResponse(target)
+    candidate = os.path.join(build_dir, full_path)
+    if os.path.isfile(candidate):
+        return FileResponse(candidate)
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
