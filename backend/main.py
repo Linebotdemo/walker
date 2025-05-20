@@ -694,9 +694,9 @@ router = company_router
 
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
 app.mount(
-    "/", 
-    StaticFiles(directory=build_dir, html=True),
-    name="spa",
+    "/static",
+    StaticFiles(directory=os.path.join(build_dir, "static")),
+    name="static",
 )
 
 
@@ -1102,12 +1102,11 @@ def catch_all(full_path: str):
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 @app.get("/{full_path:path}", include_in_schema=False)
-async def spa_fallback(full_path: str):
-    # まずビルド成果物直下に同名ファイルがあるかチェック
-    static_path = os.path.join(build_dir, full_path)
-    if os.path.isfile(static_path):
-        return FileResponse(static_path)
-    # なければ SPA のエントリーポイントを返す
+async def serve_spa(full_path: str):
+    # ビルド成果物にそのファイルがあれば返し、なければ index.html
+    candidate = os.path.join(build_dir, full_path)
+    if os.path.isfile(candidate):
+        return FileResponse(candidate)
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
