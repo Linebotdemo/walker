@@ -695,7 +695,11 @@ router = company_router
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
 if not os.path.isdir(build_dir):
     raise RuntimeError(f"ビルド成果物が見つかりません: {build_dir}")
-
+app.mount(
+    "/static",
+    StaticFiles(directory=os.path.join(build_dir, "static")),
+    name="static",
+)
 
 
 # 会社用フィルター取得（GET）と保存（POST）
@@ -804,14 +808,9 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
-
 @app.get("/", include_in_schema=False)
 async def serve_root():
     return FileResponse(os.path.join(build_dir, "index.html"))
-
-
-
-
 
 
 
@@ -1106,11 +1105,11 @@ def catch_all(full_path: str):
 
 @app.get("/{full_path:path}", include_in_schema=False)
 async def spa_fallback(full_path: str):
+    # まずビルド成果物直下に同名ファイルがあるかチェック
     static_path = os.path.join(build_dir, full_path)
     if os.path.isfile(static_path):
-        # 存在するファイルならそれを返す
         return FileResponse(static_path)
-    # それ以外は index.html にフォールバック
+    # なければ SPA のエントリーポイントを返す
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
