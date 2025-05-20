@@ -697,7 +697,7 @@ if not os.path.isdir(build_dir):
     raise RuntimeError(f"ビルド成果物が見つかりません: {build_dir}")
 print("📂 React build dir:", build_dir)
 
-app.mount("/", StaticFiles(directory=build_dir, html=True), name="spa")
+app.mount("/static", StaticFiles(directory=os.path.join(build_dir, "static")), name="static")
 
 
 
@@ -1089,6 +1089,13 @@ async def serve_index():
 
 
 @app.get("/{full_path:path}")
+def catch_all(full_path: str):
+    static_file = os.path.join(build_dir, full_path)
+    if os.path.exists(static_file):
+        return FileResponse(static_file)
+    return FileResponse(os.path.join(build_dir, "index.html"))
+
+@app.get("/{full_path:path}", include_in_schema=False)
 def catch_all(full_path: str):
     static_file = os.path.join(build_dir, full_path)
     if os.path.exists(static_file):
