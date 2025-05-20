@@ -695,10 +695,6 @@ router = company_router
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
 if not os.path.isdir(build_dir):
     raise RuntimeError(f"ビルド成果物が見つかりません: {build_dir}")
-print("📂 React build dir:", build_dir)
-
-app.mount("/", StaticFiles(directory=build_dir, html=True), name="spa")
-
 
 
 
@@ -806,6 +802,19 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         status_code=422,
         content={"detail": exc.errors()}
     )
+
+
+
+@app.get("/", include_in_schema=False)
+async def serve_root():
+    return FileResponse(os.path.join(build_dir, "index.html"))
+
+
+
+
+
+
+
 
 # Utility Functions
 def save_upload(file: UploadFile) -> str:
@@ -1096,10 +1105,12 @@ def catch_all(full_path: str):
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 @app.get("/{full_path:path}", include_in_schema=False)
-def catch_all(full_path: str):
-    static_file = os.path.join(build_dir, full_path)
-    if os.path.exists(static_file):
-        return FileResponse(static_file)
+async def spa_fallback(full_path: str):
+    static_path = os.path.join(build_dir, full_path)
+    if os.path.isfile(static_path):
+        # 存在するファイルならそれを返す
+        return FileResponse(static_path)
+    # それ以外は index.html にフォールバック
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
