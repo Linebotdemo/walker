@@ -55,8 +55,7 @@ app = FastAPI(title="WalkAudit-GO API")
 
 
 BASE_DIR = Path(__file__).resolve().parent
-print("📂 STATIC DIR:", BASE_DIR / "static")
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+
 # 自作モジュール
 
 from database import get_db
@@ -101,6 +100,9 @@ app = FastAPI()
 # OAuth2 scheme for token authentication
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 security = HTTPBearer()
+
+
+
 
 # Database Models
 class Area(Base):
@@ -688,6 +690,18 @@ city_router = APIRouter(
 admin_router = APIRouter(prefix="/api/admin", tags=["admin"], dependencies=[Depends(get_current_user)])
 company_router = APIRouter(prefix="/api/company", tags=["company"])
 router = company_router
+
+
+build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
+if not os.path.isdir(build_dir):
+    raise RuntimeError(f"ビルド成果物が見つかりません: {build_dir}")
+print("📂 React build dir:", build_dir)
+
+app.mount("/", StaticFiles(directory=build_dir, html=True), name="spa")
+
+
+
+
 # 会社用フィルター取得（GET）と保存（POST）
 @router.post("/api/company/filter/cities")
 def get_company_city_filter(current_user: User = Depends(get_current_user)):
@@ -745,6 +759,12 @@ def post_filter_cities(payload: dict, db: Session = Depends(get_db), current_use
     current_user.selected_cities = cities
     db.commit()
     return {"selected_cities": cities}
+
+@app.api_route("/{full_path:path}", methods=["GET", "HEAD"])
+async def spa_catch_all(full_path: str):
+    return FileResponse(os.path.join(build_dir, "index.html"))
+
+
 
 # Request logging middleware
 @app.middleware("http")
@@ -1050,14 +1070,6 @@ async def login(form_data: Login, db: Session = Depends(get_db)):
 
 
 
-
-
-build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
-if os.path.isdir(build_dir):
-    # ログ用
-    print("📂 React build dir:", build_dir)
-    # 静的ファイルと SPA のフォールバックとして index.html を配信
-    app.mount("/", StaticFiles(directory=build_dir, html=True), name="react")
 
 
 
