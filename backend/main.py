@@ -694,8 +694,7 @@ company_router = APIRouter(prefix="/api/company", tags=["company"])
 router = company_router
 
 
-
-app.include_router(admin_router, prefix="/api/admin")
+app.include_router(admin_router,  prefix="/api/admin")
 app.include_router(company_router, prefix="/api/company")
 app.include_router(city_router,    prefix="/api/city")
 
@@ -1103,16 +1102,18 @@ def catch_all(full_path: str):
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 @app.get("/", include_in_schema=False)
-async def serve_index():
+async def serve_root():
     return FileResponse(os.path.join(build_dir, "index.html"))
 
+# † GET "/any/path" でもまずファイルを探して、なければ index.html
 @app.get("/{full_path:path}", include_in_schema=False)
 async def spa_fallback(full_path: str):
     candidate = os.path.join(build_dir, full_path)
     if os.path.isfile(candidate):
+        # 例えば "/favicon.ico" など静的ファイルを直接返却
         return FileResponse(candidate)
+    # それ以外は React のエントリ
     return FileResponse(os.path.join(build_dir, "index.html"))
-
 
 @app.get("/auth/me")
 async def get_current_user_info(user: User = Depends(get_current_user), local_kw: Optional[str] = Query(None)):
