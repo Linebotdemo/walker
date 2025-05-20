@@ -38,12 +38,11 @@ export default defineConfig({
   },
 
   // keep your existing server/public/base settings
-  server: {
-    port: 5173
-  },
+  server: { port: 5173 },
   publicDir: 'public',
-  base: './'
+  base: './',                // ← カンマを忘れない
   build: {
-    outDir: 'build'
+    outDir: 'build',         // backend/frontend/build へコピーするフォルダ
+    assetsDir: 'assets'
   }
 })
