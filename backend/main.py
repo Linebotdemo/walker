@@ -701,6 +701,16 @@ app.mount(
     name="spa",
 )
 
+app.include_router(admin_router)
+app.include_router(company_router)
+app.include_router(city_router)
+build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
+app.mount(
+    "/static",
+    StaticFiles(directory=os.path.join(build_dir, "static")),
+    name="static",
+)
+
 
 # 会社用フィルター取得（GET）と保存（POST）
 @router.post("/api/company/filter/cities")
@@ -1104,11 +1114,10 @@ def catch_all(full_path: str):
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 @app.get("/{full_path:path}", include_in_schema=False)
-async def serve_spa(full_path: str):
-    # ビルド成果物にそのファイルがあれば返し、なければ index.html
-    candidate = os.path.join(build_dir, full_path)
-    if os.path.isfile(candidate):
-        return FileResponse(candidate)
+async def spa_fallback(full_path: str):
+    path = os.path.join(build_dir, full_path)
+    if os.path.isfile(path):
+        return FileResponse(path)
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
@@ -2719,11 +2728,7 @@ async def startup_event():
     create_admin_user()
 
 # Include Routers
-app.include_router(admin_router)
-app.include_router(company_router)
-app.include_router(city_router)
-build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
-app.mount("/", StaticFiles(directory=build_dir, html=True), name="spa")
+
 # Main entry point
 if __name__ == "__main__":
     logger.info("Starting Uvicorn server")
