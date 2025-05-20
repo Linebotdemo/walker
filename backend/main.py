@@ -696,9 +696,9 @@ router = company_router
 
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
 app.mount(
-    "/static",
-    StaticFiles(directory=os.path.join(build_dir, "static")),
-    name="static",
+    "/",
+    StaticFiles(directory=build_dir, html=True),
+    name="spa",
 )
 
 
