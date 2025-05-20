@@ -14,12 +14,15 @@ from pathlib import Path
 from pydantic import BaseModel
 from schemas import ChatMessageCreate
 import uuid
+import traceback
 import shutil
 from chat_ws import router as ws_router
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
+from fastapi import HTTPException
 from jose import JWTError, jwt
 from fastapi import Query
+from fastapi.responses import FileResponse
 from sqlalchemy import or_
 import uuid
 from passlib.hash import bcrypt
@@ -38,6 +41,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials, OAuth2Pas
 from fastapi.responses import JSONResponse
 from starlette.responses import StreamingResponse
 from starlette.websockets import WebSocketState
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.exceptions import RequestValidationError
 from typing import List
 from sqlalchemy import (
@@ -70,6 +74,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+logger = logging.getLogger("uvicorn.error")
 logger.info("Starting FastAPI application")
 
 # Load environment variables
@@ -391,6 +396,7 @@ class MessageOut(BaseModel):
         "from_attributes": True,
         "arbitrary_types_allowed": True
     }
+
 
 
 class CitySignUp(BaseModel):
@@ -757,28 +763,30 @@ async def log_requests(request: Request, call_next):
         )
 
 # Custom error handlers
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    logger.error(f"Validation error: {exc.errors()}")
-    return JSONResponse(
-        status_code=422,
-        content={"detail": exc.errors()},
-        headers={"Access-Control-Allow-Origin": "http://localhost:5173"}
-    )
-
 @app.exception_handler(Exception)
 async def log_exception_handler(request: Request, exc: Exception):
-    # HTTPException はそのまま FastAPI に返す
-    if isinstance(exc, HTTPException):
-        raise exc
-
-    # それ以外は 500 としてログ出力
-    logger.exception(f"UNCAUGHT ERROR on {request.method} {request.url}: {exc}")
+    logger.exception(f"🛑 UNHANDLED ERROR\nMETHOD: {request.method}\nURL: {request.url}\nERROR: {repr(exc)}")
     return JSONResponse(
         status_code=500,
-        content={"detail": "Internal server error"},
-        headers={"Access-Control-Allow-Origin": "http://localhost:5173"}
+        content={"detail": "Internal server error"}
     )
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    logger.error(f"⚠️ HTTP ERROR {exc.status_code} on {request.url} → {exc.detail}")
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail}
+    )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    logger.warning(f"🔎 Validation error on {request.url} → {exc.errors()}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors()}
+    )
+
 # Utility Functions
 def save_upload(file: UploadFile) -> str:
     uploads = Path("static/uploads")
@@ -1045,16 +1053,35 @@ async def login(form_data: Login, db: Session = Depends(get_db)):
 
 
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
-app.mount("/static", StaticFiles(directory=os.path.join(build_dir, "static")), name="static")
+if os.path.isdir(build_dir):
+    # ログ用
+    print("📂 React build dir:", build_dir)
+    # 静的ファイルと SPA のフォールバックとして index.html を配信
+    app.mount("/", StaticFiles(directory=build_dir, html=True), name="react")
+
+
 
 @app.get("/")
-def index():
-    return FileResponse(os.path.join(build_dir, "index.html"))
+async def serve_index():
+    index_path = os.path.join(build_dir, "index.html")
+    print(f"🧪 Checking for index.html at: {index_path}")
+    if not os.path.exists(index_path):
+        print("❌ index.html not found!")
+        raise HTTPException(status_code=404, detail="index.html not found")
+
+    try:
+        return FileResponse(index_path)
+    except Exception as e:
+        print(f"❌ FileResponse failed: {e}")
+        raise HTTPException(status_code=500, detail="Could not serve index.html")
+
 
 @app.get("/{full_path:path}")
 def catch_all(full_path: str):
+    static_file = os.path.join(build_dir, full_path)
+    if os.path.exists(static_file):
+        return FileResponse(static_file)
     return FileResponse(os.path.join(build_dir, "index.html"))
-
 
 
 
@@ -2670,4 +2697,4 @@ app.include_router(city_router)
 # Main entry point
 if __name__ == "__main__":
     logger.info("Starting Uvicorn server")
-    uvicorn.run(app, host="0.0.0.0", port=10000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
