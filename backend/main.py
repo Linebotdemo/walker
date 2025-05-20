@@ -95,9 +95,6 @@ engine = create_engine(DB_URL, connect_args={"check_same_thread": False} if "sql
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
-ws_router = APIRouter()
-app.include_router(ws_router)
-app = FastAPI()
 
 # OAuth2 scheme for token authentication
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -764,9 +761,7 @@ def post_filter_cities(payload: dict, db: Session = Depends(get_db), current_use
     db.commit()
     return {"selected_cities": cities}
 
-@app.api_route("/{full_path:path}", methods=["GET", "HEAD"])
-async def spa_catch_all(full_path: str):
-    return FileResponse(os.path.join(build_dir, "index.html"))
+
 
 
 
