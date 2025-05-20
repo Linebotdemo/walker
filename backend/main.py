@@ -693,8 +693,6 @@ router = company_router
 
 
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
-if not os.path.isdir(build_dir):
-    raise RuntimeError(f"ビルド成果物が見つかりません: {build_dir}")
 app.mount(
     "/", 
     StaticFiles(directory=build_dir, html=True),
