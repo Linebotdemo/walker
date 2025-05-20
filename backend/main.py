@@ -13,11 +13,13 @@ from typing import Optional, List
 from pathlib import Path
 from pydantic import BaseModel
 from schemas import ChatMessageCreate
+
 import uuid
 import traceback
 import shutil
 from chat_ws import router as ws_router
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses    import FileResponse
 from dotenv import load_dotenv
 from fastapi import HTTPException
 from jose import JWTError, jwt
