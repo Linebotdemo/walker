@@ -2722,6 +2722,8 @@ async def startup_event():
 app.include_router(admin_router)
 app.include_router(company_router)
 app.include_router(city_router)
+build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
+app.mount("/", StaticFiles(directory=build_dir, html=True), name="spa")
 # Main entry point
 if __name__ == "__main__":
     logger.info("Starting Uvicorn server")
