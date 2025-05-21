@@ -32,6 +32,7 @@ from fastapi import APIRouter
 from fastapi import Body
 from fastapi import FastAPI, APIRouter, Depends
 from dependencies import get_current_user
+from starlette.routing import Route, Mount 
 from deps import get_current_user
 from fastapi import (
     FastAPI, File, UploadFile, Form, HTTPException, Depends,
@@ -786,12 +787,24 @@ app.mount(
 # 2) SPA entrypoint & fallback
 @app.get("/{full_path:path}", include_in_schema=False)
 async def spa_fallback(request: Request, full_path: str):
-    if request.url.path.startswith(("/static", "/api", "/auth")):
+    logger.debug(f"[spa_fallback] incoming path: {request.url.path!r}")
+    # API ルートかどうか判定
+    if (
+        request.url.path.startswith("/static")
+        or request.url.path.startswith("/api")
+        or request.url.path.startswith("/auth")
+    ):
+        logger.debug(f"[spa_fallback] passing through to 404 for {request.url.path!r}")
         raise HTTPException(status_code=404)
+
     candidate = os.path.join(build_dir, full_path)
     if os.path.isfile(candidate):
+        logger.debug(f"[spa_fallback] serving file: {candidate}")
         return FileResponse(candidate)
+
+    logger.debug(f"[spa_fallback] serving index.html")
     return FileResponse(os.path.join(build_dir, "index.html"))
+
 
 
 
@@ -2750,9 +2763,19 @@ async def chat_websocket(chat_id: int, websocket: WebSocket, db: Session = Depen
 
 # Startup Event
 @app.on_event("startup")
-async def startup_event():
-    logger.info("Application startup")
-    create_admin_user()
+def dump_routes():
+    logger.debug("===== Registered Routes =====")
+    for r in app.router.routes:
+        # "通常の" HTTP ルート
+        if isinstance(r, Route):
+            logger.debug(f"[Route] methods={r.methods} path={r.path}")
+        # StaticFiles などをマウントしたもの
+        elif isinstance(r, Mount):
+            logger.debug(f"[Mount]  path={r.path} (app={r.app!r})")
+        else:
+            # 他に特殊なものがあればここで捕捉
+            logger.debug(f"[Other:{type(r)}] path={getattr(r, 'path', None)}")
+    logger.debug("===== End Routes =====")
 
 # Include Routers
 
