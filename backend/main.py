@@ -767,7 +767,7 @@ async def get_current_user_info(user: User = Depends(get_current_user)):
 
 
 
-
+app.include_router(auth_router,    prefix="/auth")
 app.include_router(admin_router,  prefix="/api/admin")
 app.include_router(company_router, prefix="/api/company")
 app.include_router(city_router,    prefix="/api/city")
@@ -786,20 +786,11 @@ app.mount(
 # 2) SPA entrypoint & fallback
 @app.get("/{full_path:path}", include_in_schema=False)
 async def spa_fallback(request: Request, full_path: str):
-    # API や認証は本来のルートへ委譲
-    if (
-        request.url.path.startswith("/static")
-        or request.url.path.startswith("/api")
-        or request.url.path.startswith("/auth")
-    ):
+    if request.url.path.startswith(("/static", "/api", "/auth")):
         raise HTTPException(status_code=404)
-
-    # ビルド成果物にファイルがあれば返却
     candidate = os.path.join(build_dir, full_path)
     if os.path.isfile(candidate):
         return FileResponse(candidate)
-
-    # それ以外は React の index.html を返す
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
