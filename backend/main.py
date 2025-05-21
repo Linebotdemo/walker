@@ -768,7 +768,7 @@ async def get_current_user_info(user: User = Depends(get_current_user)):
 
 
 
-app.include_router(auth_router,    prefix="/auth")
+app.include_router(auth_router, prefix="/auth")
 app.include_router(admin_router,  prefix="/api/admin")
 app.include_router(company_router, prefix="/api/company")
 app.include_router(city_router,    prefix="/api/city")
@@ -787,26 +787,13 @@ app.mount(
 # 2) SPA entrypoint & fallback
 @app.get("/{full_path:path}", include_in_schema=False)
 async def spa_fallback(request: Request, full_path: str):
-    logger.debug(f"[spa_fallback] incoming path: {request.url.path!r}")
-    # API ルートかどうか判定
-    if (
-        request.url.path.startswith("/static")
-        or request.url.path.startswith("/api")
-        or request.url.path.startswith("/auth")
-    ):
-        logger.debug(f"[spa_fallback] passing through to 404 for {request.url.path!r}")
+    # /static, /api, /auth はここで拾わずに (raise 404) 本来のハンドラへ委譲
+    if request.url.path.startswith(("/static", "/api", "/auth")):
         raise HTTPException(status_code=404)
-
     candidate = os.path.join(build_dir, full_path)
     if os.path.isfile(candidate):
-        logger.debug(f"[spa_fallback] serving file: {candidate}")
         return FileResponse(candidate)
-
-    logger.debug(f"[spa_fallback] serving index.html")
     return FileResponse(os.path.join(build_dir, "index.html"))
-
-
-
 
 # 会社用フィルター取得（GET）と保存（POST）
 @router.post("/api/company/filter/cities")
