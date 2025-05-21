@@ -781,12 +781,15 @@ app.mount(
     name="static",
 )
 
-# 2) SPA entrypoint & fallback  
-app.mount(
-    "/", 
-    StaticFiles(directory=build_dir, html=True),
-    name="spa"
-)
+# 2) SPA entrypoint & fallback  (GET のみ)
+@app.get("/{full_path:path}", include_in_schema=False)
+async def spa_fallback(full_path: str):
+    # ビルド出力の中にそのファイルがあれば返す（e.g. /static/js/main.js）
+    candidate = os.path.join(build_dir, full_path)
+    if os.path.isfile(candidate):
+        return FileResponse(candidate)
+    # なければ必ず index.html を返して React 側でルーティング
+    return FileResponse(os.path.join(build_dir, "index.html"))
 
 
 
