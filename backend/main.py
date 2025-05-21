@@ -53,6 +53,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
 
 import uvicorn
+
 app = FastAPI(title="WalkAudit-GO API")
 
 
@@ -689,6 +690,82 @@ city_router = APIRouter(
 admin_router = APIRouter(prefix="/api/admin", tags=["admin"], dependencies=[Depends(get_current_user)])
 company_router = APIRouter(prefix="/api/company", tags=["company"])
 router = company_router
+auth_router = APIRouter(prefix="/auth", tags=["auth"])
+
+@auth_router.post("/signup", summary="ユーザー登録")
+def signup(p: SignUp, db: Session = Depends(get_db)):
+    # 既存の /auth/signup 処理をまるごとコピー
+    logger.debug(f"Signup attempt for email: {p.email}")
+    if get_user_by_email(p.email, db):
+        raise HTTPException(status_code=400, detail="Email already registered")
+    org = Organization(
+        name=p.org_name,
+        industry=p.industry or "general",
+        code=f"C-{uuid.uuid4().hex[:6]}",
+        region=p.areas[0] if p.areas else None
+    )
+    db.add(org); db.flush()
+    for area_name in p.areas:
+        area = db.query(Area).filter(Area.name == area_name).first()
+        if not area:
+            area = Area(name=area_name)
+            db.add(area); db.flush()
+        org.areas.append(area)
+    user_code = f"U-{uuid.uuid4().hex[:6].upper()}"
+    user = User(
+        email=p.email,
+        password=bcrypt.hash(p.password),
+        name=p.name,
+        username=p.email.split('@')[0],
+        department=p.department,
+        is_admin=False,
+        user_type="company",
+        role="company",
+        org_id=org.id,
+        code=user_code,
+    )
+    db.add(user); db.commit()
+    return {"token": create_token(user)}
+
+@auth_router.post("/login", summary="ログイン")
+async def login(form_data: Login, db: Session = Depends(get_db)):
+    # 既存の /auth/login 処理をまるごとコピー
+    admin_email = os.getenv("ADMIN_EMAIL"); admin_pass = os.getenv("ADMIN_PASSWORD")
+    user = authenticate_user(db, form_data.email, form_data.password)
+    if form_data.email == admin_email and form_data.password == admin_pass:
+        if not user:
+            user = db.query(User).filter(User.email == admin_email).first()
+            if not user:
+                user = User(
+                    code=f"DEBUG-{uuid.uuid4().hex[:6].upper()}",
+                    email=admin_email,
+                    password=bcrypt.hash(admin_pass),
+                    is_admin=True, user_type="admin", name="EnvAdmin"
+                )
+                db.add(user); db.commit(); db.refresh(user)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+    return {"token": create_token(user)}
+
+@auth_router.get("/me", summary="認証ユーザー情報取得")
+async def get_current_user_info(user: User = Depends(get_current_user)):
+    # 既存の /auth/me 処理をまるごとコピー
+    user_type = (
+        "admin"  if user.is_admin or user.user_type=="admin" else
+        "city"   if user.role=="city" or user.user_type=="city" else
+        "company" if user.role=="company" or user.user_type=="company" else
+        "normal"
+    )
+    return {
+        "id": user.id,
+        "username": user.name or user.email,
+        "email": user.email,
+        "user_type": user_type,
+        "org": user.org.code if user.org else None,
+        "userCode": user.code,
+    }
+
+
 
 
 app.include_router(admin_router,  prefix="/api/admin")
@@ -1056,41 +1133,6 @@ async def login(form_data: Login, db: Session = Depends(get_db)):
 
 
 
-@app.get("/")
-async def serve_index():
-    index_path = os.path.join(build_dir, "index.html")
-    print(f"🧪 Checking for index.html at: {index_path}")
-    if not os.path.exists(index_path):
-        print("❌ index.html not found!")
-        raise HTTPException(status_code=404, detail="index.html not found")
-
-    try:
-        return FileResponse(index_path)
-    except Exception as e:
-        print(f"❌ FileResponse failed: {e}")
-        raise HTTPException(status_code=500, detail="Could not serve index.html")
-
-
-@app.get("/{full_path:path}")
-def catch_all(full_path: str):
-    static_file = os.path.join(build_dir, full_path)
-    if os.path.exists(static_file):
-        return FileResponse(static_file)
-    return FileResponse(os.path.join(build_dir, "index.html"))
-
-@app.get("/", include_in_schema=False)
-async def serve_root():
-    return FileResponse(os.path.join(build_dir, "index.html"))
-
-# † GET "/any/path" でもまずファイルを探して、なければ index.html
-@app.get("/{full_path:path}", include_in_schema=False)
-async def spa_fallback(full_path: str):
-    candidate = os.path.join(build_dir, full_path)
-    if os.path.isfile(candidate):
-        # 例えば "/favicon.ico" など静的ファイルを直接返却
-        return FileResponse(candidate)
-    # それ以外は React のエントリ
-    return FileResponse(os.path.join(build_dir, "index.html"))
 
 @app.get("/auth/me")
 async def get_current_user_info(user: User = Depends(get_current_user), local_kw: Optional[str] = Query(None)):
