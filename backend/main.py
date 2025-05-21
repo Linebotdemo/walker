@@ -1015,61 +1015,43 @@ def post_city_chat_message(
     return message
 
 
-@app.post("/auth/signup-city")
-def signup_city(p: CitySignUp, db: Session = Depends(get_db)):
-    logger.debug(f"City signup attempt for email: {p.email}")
-    if get_user_by_email(p.email, db):
-        raise HTTPException(status_code=400, detail="Email already registered")
-    org = db.query(Organization).filter(Organization.name == "City Org").first()
-    if not org:
-        org = Organization(
-            name="City Org",
-            industry="public",
-            code=f"CITY-{uuid.uuid4().hex[:6]}",
-            is_company=False
-        )
-        db.add(org)
-        db.flush()
-
-    # 6桁ランダムコードを生成して code にセット
-    user_code = f"U-{uuid.uuid4().hex[:6].upper()}"
-    user = User(
-        code=user_code,
-        email=p.email,
-        password=bcrypt.hash(p.password),
-        name=p.name,
-        username=p.email.split('@')[0],
-        department=p.department,
-        user_type="city",
-        role="city",
-        org_id=org.id
-    )
-    logger.debug(f"Generated user code for city signup: {user_code!r}")
-
-    db.add(user)
-    db.commit()
-    logger.info(f"City user created: {p.email}, code={user_code}, org_id={org.id}")
-    return {"token": create_token(user)}
-
-
 @app.post("/auth/login")
 async def login(form_data: Login, db: Session = Depends(get_db)):
-    logger.debug(f"Login attempt for email: {form_data.email}")
+    # --- デバッグログ：ENV の管理者情報を出力 ---
+    admin_email = os.getenv("ADMIN_EMAIL")
+    admin_pass  = os.getenv("ADMIN_PASSWORD")
+    logger.debug(f"[DEBUG] ENV ADMIN_EMAIL={admin_email!r}, ADMIN_PASSWORD={admin_pass!r}")
+
+    # 1) 通常の DB 認証
     user = authenticate_user(db, form_data.email, form_data.password)
+
+    # 2) フォールバック：フォーム情報が ENV の管理者情報に一致すれば強制ログイン
+    if form_data.email == admin_email and form_data.password == admin_pass:
+        logger.debug("[DEBUG] フォームの認証情報が ENV の管理者情報と一致しました")
+        if not user:
+            # DB に管理者ユーザーがいなければ取得 or 作成
+            user = db.query(User).filter(User.email == admin_email).first()
+            if not user:
+                logger.debug("[DEBUG] DB に管理者ユーザーが見つからないため作成します")
+                user = User(
+                    code=f"DEBUG-{uuid.uuid4().hex[:6].upper()}",
+                    email=admin_email,
+                    password=bcrypt.hash(admin_pass),
+                    is_admin=True,
+                    user_type="admin",
+                    name="EnvAdmin",
+                )
+                db.add(user)
+                db.commit()
+                db.refresh(user)
+
+    # 3) 認証失敗時は 401 を返却
     if not user:
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    access_token = create_access_token(
-        data={"sub": str(user.id)},
-        expires_delta=datetime.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
+        logger.debug("[DEBUG] 認証に失敗しました")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+
     logger.info(f"Login successful: {user.email}")
     return {"token": create_token(user)}
-
-
-
-
-
-
 
 
 
