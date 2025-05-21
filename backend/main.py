@@ -13,7 +13,7 @@ from typing import Optional, List
 from pathlib import Path
 from pydantic import BaseModel
 from schemas import ChatMessageCreate
-
+from fastapi import FastAPI, Request, HTTPException
 import uuid
 import traceback
 import shutil
@@ -774,21 +774,32 @@ app.include_router(city_router,    prefix="/api/city")
 
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
 
-# 1) static assets (js/css/img)  
+# 1) static assets
 app.mount(
     "/static",
     StaticFiles(directory=os.path.join(build_dir, "static")),
     name="static",
 )
 
-# 2) SPA entrypoint & fallback  (GET のみ)
+# --- ここで app.include_router(...) などを記述 ---
+
+# 2) SPA entrypoint & fallback
 @app.get("/{full_path:path}", include_in_schema=False)
-async def spa_fallback(full_path: str):
-    # ビルド出力の中にそのファイルがあれば返す（e.g. /static/js/main.js）
+async def spa_fallback(request: Request, full_path: str):
+    # API や認証は本来のルートへ委譲
+    if (
+        request.url.path.startswith("/static")
+        or request.url.path.startswith("/api")
+        or request.url.path.startswith("/auth")
+    ):
+        raise HTTPException(status_code=404)
+
+    # ビルド成果物にファイルがあれば返却
     candidate = os.path.join(build_dir, full_path)
     if os.path.isfile(candidate):
         return FileResponse(candidate)
-    # なければ必ず index.html を返して React 側でルーティング
+
+    # それ以外は React の index.html を返す
     return FileResponse(os.path.join(build_dir, "index.html"))
 
 
