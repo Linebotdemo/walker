@@ -773,11 +773,21 @@ app.include_router(company_router, prefix="/api/company")
 app.include_router(city_router,    prefix="/api/city")
 
 build_dir = os.path.join(os.path.dirname(__file__), "frontend", "build")
+
+# 1) static assets (js/css/img)  
 app.mount(
     "/static",
     StaticFiles(directory=os.path.join(build_dir, "static")),
     name="static",
 )
+
+# 2) SPA entrypoint & fallback  
+app.mount(
+    "/", 
+    StaticFiles(directory=build_dir, html=True),
+    name="spa"
+)
+
 
 
 # 会社用フィルター取得（GET）と保存（POST）
